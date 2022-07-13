@@ -70,3 +70,10 @@ export EDITOR=code
 
 # Set ipdb as the default Python debugger
 export PYTHONBREAKPOINT=ipdb.set_trace
+
+# Bun
+export BUN_INSTALL="/home/adam/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+zstyle ':omz:update' mode disabled  # disable automatic updates
+
