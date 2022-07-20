@@ -81,3 +81,5 @@ if [[ `uname` =~ "Darwin" ]]; then
   kitty @ set-font-size 14
 fi
 
+export PATH="$HOME/.local/bin:$PATH"
+
