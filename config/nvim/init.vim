@@ -3,57 +3,57 @@ let localmapleader = "\<Space>"
 
 call plug#begin()
 "   Plug 'one-dark/onedark.nvim'
-   Plug 'EdenEast/nightfox.nvim'
-   Plug 'sheerun/vim-polyglot'
-   Plug 'preservim/nerdtree'
-   Plug 'frazrepo/vim-rainbow'
-   Plug 'itchyny/lightline.vim'
-   
-   Plug 'github/copilot.vim'
-   
-   Plug 'pangloss/vim-javascript'
-   Plug 'leafgarland/typescript-vim'
-   Plug 'peitalin/vim-jsx-typescript'
-   Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'EdenEast/nightfox.nvim'
+Plug 'sheerun/vim-polyglot'
+Plug 'preservim/nerdtree'
+Plug 'frazrepo/vim-rainbow'
+Plug 'itchyny/lightline.vim'
 
-   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-   let g:coc_global_extensions = [ 'coc-tsserver' ]
-   
-   if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
-     let g:coc_global_extensions += ['coc-prettier']
+Plug 'github/copilot.vim'
+
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = [ 'coc-tsserver' ]
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+   let g:coc_global_extensions += ['coc-prettier']
+endif
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+   let g:coc_global_extensions += ['coc-eslint']
+endif
+
+function! ShowDocIfNoDiagnostic(timer_id)
+   if (coc#float#has_float() == 0 && CocHasProvider('hover') == 1)
+      silent call CocActionAsync('doHover')
    endif
+endfunction
 
-   if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
-     let g:coc_global_extensions += ['coc-eslint']
-   endif
+function! s:show_hover_doc()
+   call timer_start(500, 'ShowDocIfNoDiagnostic')
+endfunction
 
-   function! ShowDocIfNoDiagnostic(timer_id)
-     if (coc#float#has_float() == 0 && CocHasProvider('hover') == 1)
-       silent call CocActionAsync('doHover')
-     endif
-   endfunction
-
-   function! s:show_hover_doc()
-     call timer_start(500, 'ShowDocIfNoDiagnostic')
-   endfunction
-
-   autocmd CursorHoldI * :call <SID>show_hover_doc()
-   autocmd CursorHold * :call <SID>show_hover_doc()
+autocmd CursorHoldI * :call <SID>show_hover_doc()
+autocmd CursorHold * :call <SID>show_hover_doc()
 
 
-   nmap <silent> [g <Plug>(coc-diagnostic-prev)
-   nmap <silent> ]g <Plug>(coc-diagnostic-next)
-   nmap <leader>do <Plug>(coc-codeaction)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <leader>do <Plug>(coc-codeaction)
 
 
-   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-   Plug 'nvim-lua/plenary.nvim'
-   Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
-   Plug 'kyazdani42/nvim-web-devicons'
-   Plug 'romgrk/barbar.nvim'
-   
-   Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'romgrk/barbar.nvim'
+
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 "set mouse+=a
@@ -62,6 +62,9 @@ set nocompatible
 colorscheme nightfox
 set formatoptions-=cro
 
+set expandtab
+set tabstop=2
+set shiftwidth=2
 
 nnoremap <leader>sv :source $MYVIMRC<CR>
 

@@ -2,12 +2,12 @@ This repository is a fork of what is used by [Le Wagon](https://www.lewagon.com)
 
 [Le Wagon Setup](https://github.com/lewagon/setup)  
 
-Install z:  
-https://github.com/agkozak/zsh-z#for-oh-my-zsh-users
-
 Back up existing dotfiles:  
 `mkdir ~/.backup-before-dotfiles`  
 `cp -r ~/.* ~/.backup-before-dotfiles`
+
+Install delta git diff viewer:  
+https://dandavison.github.io/delta/installation.html
 
 ## Toolset
 

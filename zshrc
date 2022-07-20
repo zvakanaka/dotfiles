@@ -23,7 +23,7 @@ type -a rbenv > /dev/null && eval "$(rbenv init -)"
 
 # Load pyenv (to manage your Python versions)
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-type -a pyenv > /dev/null && eval "$(pyenv init -)" && eval "$(pyenv virtualenv-init -)" && RPROMPT+='[🐍 $(pyenv version-name)]'
+type -a pyenv > /dev/null && eval "$(pyenv init -)" && eval "$(pyenv virtualenv-init -)" && # RPROMPT+='[🐍 $(pyenv version-name)]'
 
 # Load nvm (to manage your node versions)
 export NVM_DIR="$HOME/.nvm"
@@ -76,4 +76,8 @@ export BUN_INSTALL="/home/adam/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 zstyle ':omz:update' mode disabled  # disable automatic updates
+
+if [[ `uname` =~ "Darwin" ]]; then
+  kitty @ set-font-size 14
+fi
 
