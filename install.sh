@@ -70,6 +70,18 @@ if [[ `uname` =~ "Darwin" ]]; then
   ssh-add -K ~/.ssh/id_ed25519
 fi
 
+# this is needed to use saved git credentials
+git config --global credential.helper store
+
+if [[ `uname` =~ "Linux" ]]; then
+  wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/DaddyTimeMono.zip
+  unzip DaddyTimeMono.zip DaddyTimeMono\ Nerd\ Font\ Complete\ Mono.ttf -d ~/.local/share/fonts
+  rm DaddyTimeMono.zip
+
+  # https://askubuntu.com/a/3706/379494
+  fc-cache -f -v
+fi
+
 # Refresh the current terminal with the newly installed configuration
 exec zsh
 
