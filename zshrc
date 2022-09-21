@@ -87,4 +87,5 @@ if [[ `uname` =~ "Darwin" ]]; then
 fi
 
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$PATH:$HOME/.platformio/penv/bin"
 
