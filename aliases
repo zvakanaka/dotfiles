@@ -12,3 +12,4 @@ alias stt="echo 'Launching VS Code instead of Sublime Text... (cf ~/.aliases)' &
 # these were added by me (Adam or zvakanaka)
 alias bat=batcat
 alias open='xdg-open'
+alias ding="echo -e '\a'"
